@@ -1,0 +1,40 @@
+body{
+    background-image: url(https://i.pinimg.com/originals/46/dc/6a/46dc6aba55acce24953bbc1b09bd674c.png);
+}
+
+.todos {
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+    gap: 1rem;
+}
+
+h1 {
+    text-align: center;
+    background-color: lightyellow;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.numero {
+    font-weight: bold;
+    background-color: lightgray;
+    border-radius: 100vmax;
+    display:inline-block
+}
+
+.pokemon {
+    background-color: lightyellow;
+    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .25);
+    padding-block: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.imagen {
+    width: 100%;
+    max-width: 6rem;
+}
+
+.nombre {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
