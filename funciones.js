@@ -1,22 +1,33 @@
-const listaPokemon = document.querySelectorAll("listaPokemon");
-let url = "https://pokeapi.co/api/v2/pokemon/";
+//Creamos la variable que va a contener los pokemon y la url para el fetch
+const listaPokemon = document.querySelector("#listaPokemon");
+let URL = "https://pokeapi.co/api/v2/pokemon/";
 
-for (let i = 1; i <=150, i++;) {
-    fetch(url + i)
-    .then((response) => response.json())
-    .then(data => mostrarPokemon(data))
+//Creamos un fetch que usando un for, va a obtener los primeros 150 pokemon de la API
+async function obtenerPokemon(i) {
+    try {
+        const response = await fetch(URL + i);
+        const data = await response.json();
+        mostrarPokemon(data);
+    } catch (error) {
+        console.error("Error:", error);
+    }
 }
 
-function mostrarPokemon(data) {
+(async () => {
+    for (let i = 1; i <= 150; i++) {
+        await obtenerPokemon(i);
+    }
+})();
+
+//Esta función crea un div en #listaPokemon para cada pokémon y muestra la info que queremos de cada uno
+function mostrarPokemon(poke){
     const div = document.createElement("div");
     div.classList.add("pokemon");
-    div.innerHTML = `
-    <div class="todos" id="listaPokemon">
-    <div class="pokemon">
-        <p class="numero">#001</p>
-        <img class="imagen" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur">
-        <h2 class="nombre">Bulbasaur</h2>
-    </div>
-    `;
-    listaPokemon.appendChild(div);
+    div.innerHTML = `<div class="pokemon">
+    <p class="numero">${poke.id}</p>
+    <img class="imagen" src="${poke.sprites.other["official-artwork"].front_default}" alt="${poke.name}">
+    <h2 class="nombre">${poke.name}</h2>
+</div>
+</div>`
+listaPokemon.append(div); 
 }
